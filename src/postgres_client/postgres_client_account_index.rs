@@ -19,7 +19,6 @@ use {
 
 const TOKEN_INDEX_COLUMN_COUNT: usize = 3;
 pub struct TokenSecondaryIndexEntry {
-
     secondary_key: Vec<u8>,
 
     account_key: Vec<u8>,
@@ -56,7 +55,6 @@ impl SimplePostgresClient {
         Self::prepare_query_statement(client, config, BULK_MINT_INDEX_INSERT_STATEMENT)
     }
 
-   
     pub fn build_bulk_token_index_insert_statement_common(
         client: &mut Client,
         table: &str,
@@ -115,7 +113,6 @@ impl SimplePostgresClient {
         )
     }
 
-   
     pub fn build_bulk_token_mint_index_insert_statement(
         client: &mut Client,
         config: &GeyserPluginPostgresConfig,
@@ -128,7 +125,6 @@ impl SimplePostgresClient {
         )
     }
 
-   
     fn bulk_insert_token_index_common(
         batch_size: usize,
         client: &mut Client,
@@ -184,7 +180,6 @@ impl SimplePostgresClient {
         Ok(())
     }
 
-   
     pub fn bulk_insert_token_owner_index(&mut self) -> Result<(), GeyserPluginError> {
         let client = self.client.get_mut().unwrap();
         if client.bulk_insert_token_owner_index_stmt.is_none() {
@@ -199,7 +194,6 @@ impl SimplePostgresClient {
         )
     }
 
-   
     pub fn bulk_insert_token_mint_index(&mut self) -> Result<(), GeyserPluginError> {
         let client = self.client.get_mut().unwrap();
         if client.bulk_insert_token_mint_index_stmt.is_none() {
@@ -214,7 +208,6 @@ impl SimplePostgresClient {
         )
     }
 
-   
     fn queue_token_owner_index_generic<G: GenericTokenAccount>(
         &mut self,
         token_id: &Pubkey,
@@ -234,7 +227,6 @@ impl SimplePostgresClient {
         }
     }
 
-   
     fn queue_token_mint_index_generic<G: GenericTokenAccount>(
         &mut self,
         token_id: &Pubkey,
@@ -254,7 +246,6 @@ impl SimplePostgresClient {
         }
     }
 
-   
     pub fn queue_secondary_indexes(&mut self, account: &DbAccountInfo) {
         if self.index_token_owner {
             self.queue_token_owner_index_generic::<inline_spl_token::Account>(
@@ -279,7 +270,6 @@ impl SimplePostgresClient {
         }
     }
 
-   
     fn update_token_owner_index_generic<G: GenericTokenAccount>(
         client: &mut Client,
         statement: &Statement,
@@ -306,7 +296,6 @@ impl SimplePostgresClient {
         Ok(())
     }
 
-   
     fn update_token_mint_index_generic<G: GenericTokenAccount>(
         client: &mut Client,
         statement: &Statement,
@@ -333,7 +322,6 @@ impl SimplePostgresClient {
         Ok(())
     }
 
-   
     pub fn update_token_owner_index(
         client: &mut Client,
         statement: &Statement,
@@ -354,7 +342,6 @@ impl SimplePostgresClient {
         )
     }
 
-   
     pub fn update_token_mint_index(
         client: &mut Client,
         statement: &Statement,
@@ -375,9 +362,6 @@ impl SimplePostgresClient {
         )
     }
 
-   
-   
-   
     pub fn clear_buffered_indexes(&mut self) {
         self.pending_token_owner_index.clear();
         self.pending_token_mint_index.clear();

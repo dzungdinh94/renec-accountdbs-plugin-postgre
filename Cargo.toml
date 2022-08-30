@@ -1,9 +1,9 @@
 [package]
 authors = ["dzungdinh94 <dungnguyen@remitano.com>"]
-edition = "2022"
 name = "renec-geyser-plugin-postgres"
 description = "The Renec AccountsDb plugin for PostgreSQL database."
-version = "1.11.1"
+edition = "2021"
+version = "1.0.0"
 repository = "https://github.com/solana-labs/solana"
 license = "Apache-2.0"
 homepage = "https://remitano.com/"
