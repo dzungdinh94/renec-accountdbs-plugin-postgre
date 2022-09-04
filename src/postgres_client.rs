@@ -44,7 +44,7 @@ const DEFAULT_THREADS_COUNT: usize = 100;
 const DEFAULT_ACCOUNTS_INSERT_BATCH_SIZE: usize = 10;
 const ACCOUNT_COLUMN_COUNT: usize = 10;
 const DEFAULT_PANIC_ON_DB_ERROR: bool = false;
-const DEFAULT_STORE_ACCOUNT_HISTORICAL_DATA: bool = false;
+const DEFAULT_STORE_ACCOUNT_HISTORICAL_DATA: bool = true;
 
 struct PostgresSqlClientWrapper {
     client: Client,
